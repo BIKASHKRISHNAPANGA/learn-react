@@ -6,6 +6,14 @@ import Card from './components/Card'
 
 function App() {
   const [count, setCount] = useState(0)
+  const obj={ name: 'Hitesh',
+    age: 25,
+    address: {
+      city: 'Jaipur',
+      state: 'Rajasthan',
+      country: 'India'
+    }
+  }
 let arr=[1,,223,9,3]
   return (
     <>
@@ -14,7 +22,7 @@ let arr=[1,,223,9,3]
     </h1>
    <h1 className='text-3xl bg-yellow-400 p-3 rounded-md'> hii vite app</h1>
    <Card username="anna" post="mike tyson" newAr={arr}/>
-   <Card username='puspa'/>
+   <Card username='puspa'newobj={obj}/>
    <Card post="liger"/>
     </>
   )
