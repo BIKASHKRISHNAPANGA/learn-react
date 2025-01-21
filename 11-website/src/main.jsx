@@ -1,10 +1,11 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import createBrowserRouter, { RouterProvider } from 'react-router-dom'
+import {createBrowserRouter, RouterProvider } from 'react-router-dom'
 import {Provider} from 'react-redux'
 import store from './store/store.js'
+
 
 import Home from './pages/Home.jsx'
 import Login from './pages/Login.jsx'
@@ -12,26 +13,26 @@ import Protected from './components/AuthLayout.jsx'
 import Signup from './pages/Sigup.jsx'
 import AllPosts from './pages/AllPosts.jsx'
 import AddPost from './pages/AddPost.jsx'
-import Post from './pages/Post.jsx
+import Post from './pages/Post.jsx'
 import EditPost from './pages/EditPost.jsx'
 
 const router=createBrowserRouter([
   {
     path:"/",
-    element:<App/>,
-    childern:[
+    element:<App />,
+    children:[
       {
       path: "/",
-      element:<Home/>
-    },
-    {
+      element:<Home />,
+      },
+      {
       path:"/login",
       element:(
         <Protected authentication={false}>
-          <Login/>
+          <Login />
         </Protected>
       )
-    },
+      },
     {
       path:"/signup",
       element:(
@@ -79,10 +80,10 @@ const router=createBrowserRouter([
 ])
 
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
     <Provider store={store}>
     <RouterProvider router={router} />
     </Provider>
-  </StrictMode>,
+  </React.StrictMode>,
 )
