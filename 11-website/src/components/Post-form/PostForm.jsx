@@ -6,7 +6,7 @@ import RTE from "../RTE";
 import Select from "../Select";
 import appwriteService from "../../appwrite/config"
 import { useSelector } from "react-redux";
-import { data, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function PostForm({post}){
     const {register,handleSubmit,watch,setValue,control,getValues}=useForm({
@@ -23,7 +23,7 @@ export default function PostForm({post}){
 
     const submit=  async(data)=>{
         if(post){
-            const filr=data.image[0]? await appwriteService.uploadFile (data.image[0]):null
+            const file=data.image[0]? await appwriteService.uploadFile (data.image[0]):null
 
             if (file) {
               appwriteService.deleteFile(post.featuredImage)   
@@ -51,7 +51,7 @@ export default function PostForm({post}){
     }
 
     const slugTransform=useCallback((value)=>{
-        if(value&& typeof value==="string")
+        if(value && typeof value==="string")
             return value.trim().toLowerCase().replace(/[^a-zA-Z\d\s]+/g,'-').replace(/\s/g,"-")
         
     },[])
